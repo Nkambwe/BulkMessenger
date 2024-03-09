@@ -1,25 +1,24 @@
-var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+namespace BulkMessager { 
 
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+    public partial class Program  {
 
-var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
-    {
-        options.InjectStylesheet("/swagger-ui/custom.css");
-    });
+        public static void Main(string[] args) {
+
+            var builder = WebApplication.CreateBuilder(args);
+            builder.Logging.AddDebug();
+            var startUp = new Startup();
+
+            //..configure service pipeline
+            startUp.ConfigureServices(builder.Services);
+
+            //..application builder
+            var app = builder.Build();
+            startUp.Configure(app);
+
+            //..run
+            app.Run();
+        }
+    }
+
 }
-
-// Configure the HTTP request pipeline.
-//app.UseHttpsRedirection();
-app.UseStaticFiles();
-app.UseAuthorization();
-app.MapControllers();
-
-app.Run();

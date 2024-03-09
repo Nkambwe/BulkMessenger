@@ -6,7 +6,7 @@
         /// <summary>
         /// Duration not started. Set if RunFrom date is not yet reached
         /// </summary>
-        Pending = 100,
+        New = 100,
         /// <summary>
         /// Duration is started and messages are being sent but not readed tge RunTo date
         /// </summary>

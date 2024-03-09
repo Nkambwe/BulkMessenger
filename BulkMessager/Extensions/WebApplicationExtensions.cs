@@ -1,7 +1,6 @@
 ﻿using BulkMessager.Settings;
 using BulkMessager.Utils;
 using Microsoft.AspNetCore.HttpOverrides;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace BulkMessager.Extensions {
 
@@ -11,6 +10,7 @@ namespace BulkMessager.Extensions {
     public static class WebApplicationExtensions {
 
         public static void ConfigureRequestPipeline(this WebApplication app) {
+
             if (app.Environment.IsDevelopment()) {
                 app.UseSwagger();
                 app.UseSwaggerUI();
@@ -36,7 +36,7 @@ namespace BulkMessager.Extensions {
             app.ApplicationAuth();
             app.UseMvcControllers();
         }
-
+       
         public static void ApplicationAuth(this WebApplication app) {
             app.UseAuthorization();
         }

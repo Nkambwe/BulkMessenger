@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
+using BulkMessager.Data;
+using BulkMessager.Data.Repositories;
 using BulkMessager.Services;
 using BulkMessager.Settings;
 using BulkMessager.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace BulkMessager.Extensions {
     /// <summary>
@@ -12,7 +13,7 @@ namespace BulkMessager.Extensions {
     /// </summary
     public static class ServiceCollectionExtensions {
 
-        public static void ConfigureApplicationServices(this IServiceCollection services, WebApplication app) {
+        public static void ConfigureApplicationServices(this IServiceCollection services) {
             //let the operating system decide what TLS protocol version to use
             ServicePointManager.SecurityProtocol = SecurityProtocolType.SystemDefault;
 
@@ -29,10 +30,10 @@ namespace BulkMessager.Extensions {
             services.LoadRegister();
 
             //..db connection
-            services.ConnectDatabase(app);
+            services.ConnectDatabase();
 
             //..add link for Mail API
-            services.AddMailClient(app);
+            services.AddMailClient();
             
             //..add background service to process messaging
             services.AddHostedService<MessagingBackgroundService>();
@@ -46,8 +47,7 @@ namespace BulkMessager.Extensions {
         }
 
         
-        public static void AddMailClient(this IServiceCollection services, WebApplication app) {
-
+        public static void AddMailClient(this IServiceCollection services) {
             services.AddHttpClient("MESSAGESERVER", c => {
                 c.BaseAddress = new Uri(ParamReader.GetMessageServer());
             });
@@ -57,8 +57,7 @@ namespace BulkMessager.Extensions {
         /// Connect database if conection string is found
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void ConnectDatabase(this IServiceCollection services, WebApplication app) {
-
+        public static void ConnectDatabase(this IServiceCollection services) {
             services.AddDbContext<DataContext>(o =>
                 o.UseSqlServer(ParamReader.GetConnectionString()));
         }
@@ -106,7 +105,7 @@ namespace BulkMessager.Extensions {
         public static void LoadRegister(this IServiceCollection services) {
 
             //..repositories
-            //services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
             //services.AddScoped<IMessageRepository, MessageRepository>();
 
             //..register services

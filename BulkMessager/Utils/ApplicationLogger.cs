@@ -121,9 +121,9 @@
             var date = DateTime.Now.ToString("yyyy-MM-dd");
 
             //..generate file name
-            string filename = @$"{(_fileName != null ? _isFolder ? @$"{_fileName}\Corvus_Log_{date}" : $"{_fileName}_{date}" : $"Corvus_Log_{date}")}.log";
+            string filename = @$"{(_fileName != null ? _isFolder ? @$"{_fileName}\Bulk_sms_Log_{date}" : $"{_fileName}_{date}" : $"Bulk_sms_Log_{date}")}.log";
 
-            string filepath = @$"C:\Logs";
+            string filepath = @$"C:\Logs\BulkSms";
             try {
                 //..create directory if not found
                 if (!Directory.Exists(filepath)) {
