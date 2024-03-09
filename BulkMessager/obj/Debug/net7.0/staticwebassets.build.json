@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "QEjUOcNBJWe5w0IY1Wiyz8tRWyms0td6SVx9IbIgc44=",
+  "Source": "BulkMessager",
+  "BasePath": "_content/BulkMessager",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BulkMessager\\wwwroot",
+      "Source": "BulkMessager",
+      "ContentRoot": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\",
+      "BasePath": "_content/BulkMessager",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\logo_blue.png",
+      "SourceId": "BulkMessager",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\",
+      "BasePath": "_content/BulkMessager",
+      "RelativePath": "logo_blue.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo_blue.png"
+    },
+    {
+      "Identity": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\swagger-ui\\style.css",
+      "SourceId": "BulkMessager",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\",
+      "BasePath": "_content/BulkMessager",
+      "RelativePath": "swagger-ui/style.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\swagger-ui\\style.css"
+    }
+  ]
+}

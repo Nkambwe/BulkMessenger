@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\logo_blue.png",
+      "PackagePath": "staticwebassets\\logo_blue.png"
+    },
+    {
+      "Id": "C:\\Projects\\BulkMessager\\BulkMessager\\wwwroot\\swagger-ui\\style.css",
+      "PackagePath": "staticwebassets\\swagger-ui\\style.css"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.BulkMessager.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.BulkMessager.props",
+      "PackagePath": "build\\BulkMessager.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.BulkMessager.props",
+      "PackagePath": "buildMultiTargeting\\BulkMessager.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.BulkMessager.props",
+      "PackagePath": "buildTransitive\\BulkMessager.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
