@@ -14,8 +14,6 @@ namespace BulkMessager.Services {
 
         public async override Task StartAsync(CancellationToken token) {
             await base.StartAsync(token);
-
-           
         }
 
         protected async override Task ExecuteAsync(CancellationToken token) {           
