@@ -5,6 +5,7 @@ using BulkMessager.Services;
 using BulkMessager.Settings;
 using BulkMessager.Utils;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 
 namespace BulkMessager.Extensions {
@@ -25,15 +26,23 @@ namespace BulkMessager.Extensions {
 
             //..add logging
             services.AddLogging();
-            
+
             //..register repositories
             services.LoadRegister();
 
+            var loggerFactory = LoggerFactory.Create(builder => {
+                builder.AddConsole(); 
+                builder.AddDebug();   
+            });
+            var iLoger = loggerFactory.CreateLogger<ApplicationLogger<object>>();
+            ApplicationLogger<object> logger = new(iLoger);
+            logger.LogInfo("Bulk SMS service started..");
+
             //..db connection
-            services.ConnectDatabase();
+            services.ConnectDatabase(logger);
 
             //..add link for Mail API
-            services.AddMailClient();
+            services.AddMailClient(logger);
             
             //..add background service to process messaging
             services.AddHostedService<MessagingBackgroundService>();
@@ -46,10 +55,24 @@ namespace BulkMessager.Extensions {
 
         }
 
-        
-        public static void AddMailClient(this IServiceCollection services) {
+        public static void AddMailClient(this IServiceCollection services, ApplicationLogger<object> logger) {
+
+            var url = ParamReader.GetMessageServer(logger);
+            if(url == null) {
+               return;
+            }
+
+            try {
+                var secureStr = Secure.EncryptString(url, ConfigParam.APIKEY);
+                logger.LogInfo($"Background service client URL value >> {secureStr}");
+            } catch (Exception ex) {
+                logger.LogError("Source:: Bulk SMS Service - An error occurred while trying to encrypt variable");
+                logger.LogError($"{ex.Message}");
+                logger.LogError($"{ex.StackTrace}");
+            }
+            
             services.AddHttpClient("MESSAGESERVER", c => {
-                c.BaseAddress = new Uri(ParamReader.GetMessageServer());
+                c.BaseAddress = new Uri(url);
             });
         }
 
@@ -57,9 +80,23 @@ namespace BulkMessager.Extensions {
         /// Connect database if conection string is found
         /// </summary>
         /// <param name="services">Collection of service descriptors</param>
-        public static void ConnectDatabase(this IServiceCollection services) {
-            services.AddDbContext<DataContext>(o =>
-                o.UseSqlServer(ParamReader.GetConnectionString()));
+        public static void ConnectDatabase(this IServiceCollection services, ApplicationLogger<object> logger) {
+            var connectionString = ParamReader.GetConnectionString(logger);
+            if(connectionString == null) {
+               return;
+            } 
+
+            try {
+                var secureStr = Secure.EncryptString(connectionString, ConfigParam.APIKEY);
+                logger.LogInfo($"Datebase connection string value :: {secureStr}");
+            } catch (Exception ex) {
+                logger.LogError("Source:: Bulk SMS Service - An error occurred while trying to encrypt variable");
+                logger.LogError($"{ex.Message}");
+                logger.LogError($"{ex.StackTrace}");
+            }
+
+            services.AddDbContextFactory<DataContext>(o => 
+            o.UseSqlServer(connectionString));
         }
 
         public static void ConfigureMvc(this IServiceCollection services) {
@@ -105,11 +142,12 @@ namespace BulkMessager.Extensions {
         public static void LoadRegister(this IServiceCollection services) {
 
             //..repositories
+            services.AddScoped(typeof(IApplicationLogger<>), typeof(ApplicationLogger<>));
             services.AddScoped(typeof(IRepository<,>), typeof(Repository<,>));
-            //services.AddScoped<IMessageRepository, MessageRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
 
             //..register services
-            //services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IMessageService, MessageService>();
 
         }
     }

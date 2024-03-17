@@ -3150,11 +3150,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\BulkMessager\\BulkMessager\\BulkMessager.csproj",
+      "projectUniqueName": "C:\\Projects\\BulkMessenger\\BulkMessenger\\BulkMessager\\BulkMessager.csproj",
       "projectName": "BulkMessager",
-      "projectPath": "C:\\Projects\\BulkMessager\\BulkMessager\\BulkMessager.csproj",
+      "projectPath": "C:\\Projects\\BulkMessenger\\BulkMessenger\\BulkMessager\\BulkMessager.csproj",
       "packagesPath": "C:\\Users\\Macjohnan\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\BulkMessager\\BulkMessager\\obj\\",
+      "outputPath": "C:\\Projects\\BulkMessenger\\BulkMessenger\\BulkMessager\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -3229,7 +3229,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

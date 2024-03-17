@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BulkMessager.Data.Entities;
 using BulkMessager.Dtos;
+using BulkMessager.Services;
 using BulkMessager.Utils;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,21 +12,26 @@ namespace BulkMessager.Controllers {
     public class MessagingController : Controller {
 
         private readonly IMapper _mapper;
-        private readonly ApplicationLogger<MessagingController> _appLogger;
+        private readonly IApplicationLogger<MessagingController> _logger;
+        private readonly IMessageService _service;
 
-        public MessagingController(ILogger<MessagingController> logger, IMapper mapper) {
-            _appLogger = new(logger);
+        public MessagingController(IApplicationLogger<MessagingController> logger, IMapper mapper, IMessageService service) {
+            _logger = logger;
+            _logger.Channel = "API_CONTROLLER";
             _mapper = mapper;
+            _service = service;
         }
 
         [HttpGet("/")]
         public IActionResult Welcome() {
-            return Ok("Hello World");
+            _logger.LogInfo("Calling the Welcome endpoint..");
+            var msg = _service.SayHello();
+            return Ok(msg);
         }
 
         [HttpGet]
         public IList<MessageDto> GetMessages() {
-            _appLogger.LogInfo("Retrieving a list of messages");
+            _logger.LogInfo("Retrieving a list of messages");
             var messages = new List<Message>{ 
                 new() {
                     Id=1, 
@@ -62,7 +68,7 @@ namespace BulkMessager.Controllers {
                 }
             };
 
-            _appLogger.LogInfo("Show all retrieved messages");
+            _logger.LogInfo("Show all retrieved messages");
             return messages.Select(_mapper.Map<MessageDto>).ToList();
         }
     }

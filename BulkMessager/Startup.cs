@@ -19,7 +19,6 @@ namespace BulkMessager {
         /// <param name="app"></param>
         public void Configure(WebApplication app) {
             app.ConfigureRequestPipeline();
-            app.StartApiEngine();
         }
      }
 }

@@ -1,4 +1,6 @@
-﻿namespace BulkMessager.Settings {
+﻿using BulkMessager.Utils;
+
+namespace BulkMessager.Settings {
     /// <summary>
     /// Class reads environmental variables
     /// </summary>
@@ -14,8 +16,15 @@
         /// Get database connection string from the enviroment variable
         /// </summary>
         /// <returns>Database connection string</returns>
-        public static string GetConnectionString()
-            => Environment.GetEnvironmentVariable(ConfigParam.ConnectionString);
+        public static string GetConnectionString(ApplicationLogger<object> logger) {
+            var str = Environment.GetEnvironmentVariable(ConfigParam.ConnectionString);
+
+            if(str == null) {
+               logger.LogInfo($"Bulk SMS Connection string Environment variable '{str}' is not set. Set variable and try again");
+            }
+
+            return str;
+        }
 
         /// <summary>
         /// Gets a value indicating whether SMS server enviroment variable is installed
@@ -28,7 +37,14 @@
         /// Get Url for SMS client server
         /// </summary>
         /// <returns>Client Url</returns>
-        public static string GetMessageServer()
-            => Environment.GetEnvironmentVariable(ConfigParam.MessageServerUrl);
+        public static string GetMessageServer(ApplicationLogger<object> logger) {
+            var str = Environment.GetEnvironmentVariable(ConfigParam.MessageServerUrl);
+            
+            if(str == null) {
+                logger.LogInfo($"Background SMS Service Client URL Environment variable '{str}' is not set. Set variable and try again");
+            }
+
+            return str;
+        }
     }
 }

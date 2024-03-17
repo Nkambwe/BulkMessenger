@@ -9,5 +9,7 @@
         /// Gets the name of an environment variable for SMS messaging server url
         /// </summary>
         public static string MessageServerUrl => "MESSENGER_SMSSERVERURL";
+
+        public const string APIKEY = "_l0k1@Farz3gard";
     }
 }

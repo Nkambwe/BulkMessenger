@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BulkMessager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50308edf73f89baaeab0f44fdd97c4caf375586e")]
 [assembly: System.Reflection.AssemblyProductAttribute("BulkMessager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BulkMessager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

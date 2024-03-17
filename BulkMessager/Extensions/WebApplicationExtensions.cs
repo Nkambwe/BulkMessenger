@@ -53,30 +53,5 @@ namespace BulkMessager.Extensions {
              app.MapControllers();
         }
 
-        public static void StartApiEngine(this WebApplication app) {
-            // Get ILogger from the service provider
-            var loggerFactory = app.Services.GetRequiredService<ILoggerFactory>();
-            var logger = loggerFactory.CreateLogger<WebApplication>();
-
-            //log application start
-            ApplicationLogger<WebApplication> appLogger = new(logger);
-
-            //make sure database connection string is set
-            if (!ParamReader.IsDatabaseInstalled()){
-                appLogger.LogError("Connection string variables has not been set. Use variable name 'MESSENGER_CONNECTIONSTRING' to set connection string in System Variables.");
-                return;
-            }
-             
-            //..make sure SMS Client URL is set
-            if (!ParamReader.IsSMSUrlInstalled()) {
-                appLogger.LogError("SMS server variables have not been set. Use variable variable name 'MESSENGER_SMSSERVERURL' to set SMS Messaging server URL");
-                return;
-            }
-
-            //..log application start
-            appLogger.LogInfo("Service started..");
-
-        }
-
      }
 }

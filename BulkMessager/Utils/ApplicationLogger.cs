@@ -4,7 +4,7 @@
     /// Class handles application logs for a given object
     /// </summary>
     /// <typeparam name="T">Type of object to log</typeparam>
-    public class ApplicationLogger<T> {
+    public class ApplicationLogger<T> : IApplicationLogger<T> {
 
         private readonly ILogger<T> _logger;
         private readonly string _fileName;

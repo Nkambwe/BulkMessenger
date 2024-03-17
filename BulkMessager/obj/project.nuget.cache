@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eb7LVgD0FbHJ1YWtvF21XYkscEER+lMENUg5NEajj0lpJRkHpzOBgdhale4+mO8FY9lfCwh6AW2a1vmoUluA+A==",
+  "dgSpecHash": "B1kkea94OgVw+xx3KEvFFj/xXlM73Kjaycb+KMPJYUCtIVl/VPLEBAjdCVlKFUegJiFOgnh459RhEYOBjk/RIw==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\BulkMessager\\BulkMessager\\BulkMessager.csproj",
+  "projectFilePath": "C:\\Projects\\BulkMessenger\\BulkMessenger\\BulkMessager\\BulkMessager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Macjohnan\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Macjohnan\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",

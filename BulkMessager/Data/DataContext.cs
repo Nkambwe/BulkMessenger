@@ -8,8 +8,11 @@ namespace BulkMessager.Data {
 
         public DbSet<Message> Messages { get; set; }
 
+        public DataContext() { }
+
         public DataContext(DbContextOptions<DataContext> options)
             : base(options) { }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             MessageEntityConfiguration.Configure(modelBuilder.Entity<Message>());
