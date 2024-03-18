@@ -7,7 +7,7 @@ BulkMessenger is a C# ASP.NET Core 7 API designed to showcase the implementation
 - **Background Service:** Demonstrates the usage of the BackgroundService in ASP.NET Core for performing background tasks.
 - **Entity Framework (EF):** Utilizes EF for data access and management.
 - **Microsoft SQL Server:** The project is configured to use Microsoft SQL Server as the database.
-- **Unit Testing:**Demostrate Unit testing Web API Controllers, repositories and services
+- **Unit Testing:** Demostrate Unit testing Web API Controllers, repositories and services
 
 ## Prerequisites
 - .NET 7 SDK or later
