@@ -12,6 +12,8 @@ BulkMessenger is a C# ASP.NET Core 7 API designed to showcase the implementation
 ## Prerequisites
 - .NET 7 SDK or later
 - Microsoft SQL Server
+- FakeItEasy
+- FluentAssertion
 - Visual Studio or any preferred code editor
 
 ## Setup Instructions
