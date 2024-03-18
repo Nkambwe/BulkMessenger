@@ -22,7 +22,7 @@ namespace BulkMessager.Utils {
                 .ForMember(dto => dto.AddedOn, opt => opt.MapFrom(o => o.AddedOn))
                 .ForMember(dto => dto.ModifiedBy, opt => opt.MapFrom(o => (o.LastModifiedBy ?? string.Empty).Trim()))
                 .ForMember(dto => dto.ModifiedOn, opt => opt.MapFrom(o => o.LastModifiedOn))
-                .ForMember(dto => dto.LastSent, opt => opt.MapFrom(o => o.LastSent))
+                .ForMember(dto => dto.LastSent, opt => opt.MapFrom(o => o.NextSendDate))
                 .ForMember(dto => dto.MessageDeleted, opt => opt.MapFrom(o => Enum.GetName(typeof(Deleted), o.IsDeleted)));
 
             
@@ -39,7 +39,7 @@ namespace BulkMessager.Utils {
                 .ForMember(msg => msg.AddedOn, opt => opt.MapFrom(o => o.AddedOn))
                 .ForMember(msg => msg.LastModifiedBy, opt => opt.MapFrom(o => (o.ModifiedBy ?? string.Empty).Trim()))
                 .ForMember(msg => msg.LastModifiedOn, opt => opt.MapFrom(o => o.ModifiedOn))
-                .ForMember(msg => msg.LastSent, opt => opt.MapFrom(o => o.LastSent))
+                .ForMember(msg => msg.NextSendDate, opt => opt.MapFrom(o => o.LastSent))
                 .ForMember(msg => msg.IsDeleted, opt => opt.MapFrom(o => Enums.ParseEnum<Deleted>(o.MessageApproved) == Deleted.YES));
 
         }

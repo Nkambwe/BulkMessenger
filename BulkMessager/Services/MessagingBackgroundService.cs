@@ -27,7 +27,7 @@ namespace BulkMessager.Services {
         }
 
         protected async override Task ExecuteAsync(CancellationToken token) {           
-             _logger.LogInfo("SMS Background woker calling Repository method >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+             _logger.LogInfo("SMS Background woker calling Repository method:: ...........................");
              
             var msg = _messageService.SayHello();
             _logger.LogInfo($"CALLED FROM BACKGROUND SERVICE :: {msg}");

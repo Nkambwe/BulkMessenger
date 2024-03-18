@@ -22,8 +22,16 @@ namespace BulkMessager.Settings {
             if(str == null) {
                logger.LogInfo($"Bulk SMS Connection string Environment variable '{str}' is not set. Set variable and try again");
             }
-
-            return str;
+            
+            var result = "";
+            try {
+                result= Secure.DecryptString(str, ConfigParam.APIKEY);
+            } catch (Exception ex) {
+                logger.LogError("Source:: ParamReader - An error occurred while trying to decrypt Bulk SMS Connection string variable");
+                logger.LogError($"{ex.Message}");
+                logger.LogError($"{ex.StackTrace}");
+            }
+            return result;
         }
 
         /// <summary>
@@ -43,8 +51,15 @@ namespace BulkMessager.Settings {
             if(str == null) {
                 logger.LogInfo($"Background SMS Service Client URL Environment variable '{str}' is not set. Set variable and try again");
             }
-
-            return str;
+             var result = "";
+            try {
+                result= Secure.DecryptString(str, ConfigParam.APIKEY);
+            } catch (Exception ex) {
+                logger.LogError("Source:: ParamReader - An error occurred while trying to decrypt SMS Service Client URL variable");
+                logger.LogError($"{ex.Message}");
+                logger.LogError($"{ex.StackTrace}");
+            }
+            return result;
         }
     }
 }

@@ -40,10 +40,10 @@ namespace BulkMessager.Data.Entities {
         [Column("Msg_Approved")]
         public bool IsApproved { get; set; }
         /// <summary>
-        /// Get/Set the last date message was sent
+        /// Get/Set the next date message is to be sent
         /// </summary>
-        [Column("Msg_Last_sent")]
-        public DateTime? LastSent { get; set; }
+        [Column("Msg_next_send_date")]
+        public DateTime? NextSendDate { get; set; }
         /// <summary>
         /// Get/Set user who added message
         /// </summary>
