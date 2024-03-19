@@ -72,8 +72,8 @@ namespace BulkMessager.Controllers {
         [HttpPost("create")]
         public async Task<IActionResult> CreateMessage([FromBody] MessageDto message) {
 
-            await _service.CreatMessageAsync(new Message());
-            return Ok();
+            var result = await _service.CreatMessageAsync(new Message());
+            return Ok( result? "Messaage Successfully Created":"An error occurred. Could not save record" );
         }
 
         [HttpGet("/")]

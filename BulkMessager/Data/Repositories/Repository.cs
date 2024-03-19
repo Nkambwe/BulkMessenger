@@ -109,42 +109,42 @@ namespace BulkMessager.Data.Repositories {
             return query;
         }
 
-        public void Insert(T entity) {
+        public bool Insert(T entity) {
             _entities.Add(entity);
-            _context.SaveChanges();
+           return _context.SaveChanges() > 0;
         }
 
-        public async Task InsertAsync(T entity) {
+        public async Task<bool> InsertAsync(T entity) {
             await _entities.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
         }
-        public void Insert(T[] entities) {
+        public bool Insert(T[] entities) {
             _entities.AddRange(entities);
-            _context.SaveChanges();
+            return _context.SaveChanges() > 0;
         }
 
-        public async Task InsertAsync(T[] entities) {
+        public async Task<bool> InsertAsync(T[] entities) {
             await _entities.AddRangeAsync(entities);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
         }
 
-        public void Delete(T entity) {
+        public bool Delete(T entity) {
              _entities.Remove(entity);
-            _context.SaveChanges();
+            return _context.SaveChanges() > 0;
         }
 
-        public async Task DeleteAsync(T entity) {
+        public async Task<bool> DeleteAsync(T entity) {
             _entities.Remove(entity);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
         }
-        public void Delete(T[] entities) {
+        public bool Delete(T[] entities) {
             _entities.RemoveRange(entities);
-            _context.SaveChanges();
+            return _context.SaveChanges() > 0;
         }
         
-        public async Task DeleteAsync(T[] entities) {
+        public async Task<bool> DeleteAsync(T[] entities) {
             _entities.RemoveRange(entities);
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public virtual async Task<IQueryable<T>> PageAllAsync(int skip, int take) {

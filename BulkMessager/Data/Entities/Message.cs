@@ -9,11 +9,11 @@ namespace BulkMessager.Data.Entities {
         [Column("Msg_Content")]
         public string Text { get; set; }
         /// <summary>
-        /// Get/Set message run duration based on RunFrom and RunTo dates. 
+        /// Get/Set message run status based on RunFrom and RunTo dates. 
         /// </summary>
-        /// <remarks>Once RunTo date is reached, Duration is set to Completed by the system</remarks>
-        [Column("Msg_Duration")]
-        public MessageDuration Duration { get; set; }
+        /// <remarks>Once RunTo date is reached, Status is set to Completed by the system</remarks>
+        [Column("Msg_Status")]
+        public Status Status { get; set; }
         /// <summary>
         /// Get/Set the start date to which message will be sent
         /// </summary>

@@ -10,6 +10,6 @@ namespace BulkMessager.Services {
         IList<Message> GetAllMessages();
         Task<IList<Message>> GetAllMessagesAsync();
 
-        Task CreatMessageAsync(Message message);
+        Task<bool> CreatMessageAsync(Message message);
     }
 }

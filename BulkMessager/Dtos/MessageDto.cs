@@ -2,7 +2,7 @@
     public class MessageDto {
         public long Id { get; set; }
         public string Message { get; set; }
-        public string Duration { get; set; }
+        public string Status { get; set; }
         public DateTime StartSending { get; set; }
         public DateTime? StopSending { get; set; }
         public string MessageInterval { get; set; }

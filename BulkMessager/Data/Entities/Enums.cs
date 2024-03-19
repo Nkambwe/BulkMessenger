@@ -1,8 +1,8 @@
 ﻿namespace BulkMessager.Data.Entities {
     /// <summary>
-    /// Enum defining SMS run duration status based on message RunFrom and RunTo properties/>
+    /// Enum defining SMS run status based on message RunFrom and RunTo properties/>
     /// </summary>
-    public enum MessageDuration {
+    public enum Status {
         /// <summary>
         /// Duration not started. Set if RunFrom date is not yet reached
         /// </summary>
@@ -47,6 +47,10 @@
     /// Enum defining the current interval status of a message on current sending date
     /// </summary>
     public enum IntervalStatus {
+        /// <summary>
+        /// Message interval not sent 
+        /// </summary>
+        None = 0,
         /// <summary>
         /// Message sent for the current interval
         /// </summary>

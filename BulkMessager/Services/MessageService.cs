@@ -17,7 +17,7 @@ namespace BulkMessager.Services {
             _logger.Channel = "SMS_SERVICE";
          }
 
-        public async Task CreatMessageAsync(Message message) 
+        public async Task<bool> CreatMessageAsync(Message message) 
             => await _repo.InsertAsync(message);
 
         public bool Exists(long id) 
