@@ -132,30 +132,24 @@ namespace BulkMessagerTests.Controllers {
         public void MessagingController_CreateMessage_Returns_OK() { 
             
             #region Arrange
-            var messageDto = A.Fake<MessageDto>(options => {
-                options.ConfigureFake(fake => {
-                    A.CallTo(() => fake.Id).Returns(1);
-                    A.CallTo(() => fake.Message).Returns("Fake SMS message");
-                    A.CallTo(() => fake.StartSending).Returns(new DateTime(2024, 04, 23));
-                    A.CallTo(() => fake.StopSending).Returns(new DateTime(2024, 04, 25));
-                    A.CallTo(() => fake.MessageInterval).Returns("Monthly");
-                    A.CallTo(() => fake.Status).Returns("New");
-                    A.CallTo(() => fake.IntervalStatus).Returns("None");
-                    A.CallTo(() => fake.StartSending).Returns(DateTime.UtcNow);
-                    A.CallTo(() => fake.AddedBy).Returns("Marc");
-                    A.CallTo(() => fake.MessageApproved).Returns("YES");
-                    A.CallTo(() => fake.MessageDeleted).Returns("NO");
-                });
-            });
+            var messageDto = new MessageDto(){
+                Id = 1,
+                Message = "Fake SMS message",
+                StartSending = new DateTime(2024, 04, 23),
+                StopSending = new DateTime(2024, 04, 25),
+                MessageInterval = "Monthly",
+                Status = "New",
+                IntervalStatus = "None",
+                LastSent = DateTime.UtcNow,
+                AddedBy = "Marc",
+                MessageApproved = "YES",
+                MessageDeleted = "NO"
+            };
+            
+            var message = new Message();
 
             //fake mapper
             A.CallTo(() => _mapper.Map<Message>(messageDto));
-
-            var message = A.Fake<Message>(options => {
-                options.ConfigureFake(fake => {
-                    A.CallTo(() => fake.Text).Returns("Fake SMS message");
-                });
-            });
 
             //..create object
             A.CallTo(()=>_service.CreatMessageAsync(message)).Returns(Task.FromResult(true));
